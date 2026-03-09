@@ -52,8 +52,8 @@ https://github.com/user-attachments/assets/896a7140-1e85-405d-bfbe-e05c9f3a816b
 <td width="50%">
 
 ### 🚀 **AI-Powered Intelligence**
-- **Direct Image Analysis**: Screenshots are analyzed by Gemini (no Tesseract OCR)
-- **Voice Commands**: Optional Azure Speech (Whisper questions, get instant answers)
+- **Smart Image Analysis**: Region screenshots extracted with local OCR (`tesseract.js`) and parsed through Gemini Vision natively.
+- **Voice & Audio Commands**: Optional Azure Speech (Records your microphone or internal system audio loopback)
 - **Context Memory**: Remembers entire interview conversation
 - **Multi-Language Support**: C++, Python, Java, JavaScript, C
 - **Smart Response Window**: Draggable with close button
@@ -128,7 +128,9 @@ https://github.com/user-attachments/assets/896a7140-1e85-405d-bfbe-e05c9f3a816b
 ### 🎯 **Core Features** *(Completed)*
 
 - [x] **Stealth overlay** with draggable command bar and click‑through toggle
-- [x] **Screenshot capture** with direct Gemini analysis (no OCR step)
+- [x] **Region Screenshot Capture** with intelligent local OCR extraction + Gemini Vision analysis
+- [x] **LLM Response Streaming** for instant, token-by-token answer rendering
+- [x] **System Audio Loopback** capture support via WASAPI (optional)
 - [x] **AI response window** with markdown and code highlighting
 - [x] **Global shortcuts** (capture, visibility, interaction, chat, settings)
 - [x] **Session memory** and chat UI
@@ -233,12 +235,12 @@ Voice recognition is completely optional. The setup script will create a `.env` 
 
 | Action | Shortcut | Description |
 |--------|----------|-------------|
-| **Screenshot Capture** | `⌘⇧S` | Capture screen and analyze via Gemini (image understanding) |
+| **Screenshot Capture** | `⌘⇧S` | Open Region Selector, crop question, extract via OCR & analyze via Gemini |
 | **Toggle Speech** | `Alt+R` | Start/stop voice recognition (if configured) |
 | **Toggle Visibility** | `⌘⇧V` | Show/hide all windows |
 | **Toggle Interaction** | `⌘⇧I` or `Alt+A` | Enable/disable window interaction |
 | **Switch to Chat** | `⌘⇧C` | Open interactive chat window |
-| **Settings** | `⌘,` | Open settings panel |
+| **Settings** | `⌘,` | Open settings panel (Audio routing, OCR, Streaming) |
 
 ### 🎯 **Workflow**
 
@@ -262,8 +264,10 @@ Voice recognition is completely optional. The setup script will create a `.env` 
 - **Code Detection**: Automatically formats code blocks
 - **Language Specific**: Tailored responses for selected programming language
 - **Session Memory**: Maintains context across multiple questions
- - **Image Understanding**: DSA prompt is applied only for new image-based queries; chat messages don’t include the full prompt
- - **Multi-monitor & Area Capture**: Programmatic APIs allow targeting a display and optional rectangular crop for focused analysis
+- **Performance Streaming**: Responses type out instantly token-by-token directly from the Gemini stream
+- **System Audio Support**: Route your desktop's internal audio output directly to the Azure transcriber for 100% silent extraction
+- **Image Understanding**: DSA prompt applied seamlessly alongside `tesseract.js` OCR text for multi-modal accuracy
+- **Area Capture**: Drag a region over your screen to rapidly isolate the exact interview question text via OCR
 
 #### 🔊 **Optional Voice Features** (Azure Speech)
 - **Real-time Transcription**: Speak questions naturally
@@ -353,7 +357,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 
 ⭐ **Star this repo** if crackiv.ai helped you ace your interviews or you vibed with it!
-
 
 
 
